@@ -4,10 +4,9 @@ import { getUser } from "@/auth/server";
 import { prisma } from "@/db/prisma";
 import { handleError } from "@/lib/utils";
 import openAi from "@/openai";
-import { Note } from "@prisma/client";
 import { ChatCompletionMessageParam } from "openai/resources/index";
 
-export const updateNoteAction = async (noteId: Note['id'], text: Note['text']) => {
+export const updateNoteAction = async (noteId: string, text: string) => {
   try {
     const user = await getUser();
 
@@ -47,7 +46,7 @@ export const createNoteAction = async (noteId: string) => {
   }
 };
 
-export const deleteNoteAction = async (noteId: Note['id']) => {
+export const deleteNoteAction = async (noteId: string) => {
   try {
     const user = await getUser();
     if (!user) throw Error('Debes haber iniciado sesión para eliminar una nota');
