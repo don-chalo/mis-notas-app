@@ -19,3 +19,7 @@ npm run dev
 
 ...y abre [http://localhost:3000](http://localhost:3000) con tu navegador para ver los resultados.
 
+
+Puedes ver el sitio [acá](https://mis-notas-app.vercel.app/).  
+Usuario de prueba: `prueba-1@misnotas.com`  
+contraseña: `12345678`
