@@ -7,7 +7,7 @@ export default function LoginPage() {
             <Card className="w-full max-w-md">
                 <CardHeader className="mb-4">
                     <CardTitle className="text-center text-3xl">
-                        Login
+                        Iniciar Sesión
                     </CardTitle>
                 </CardHeader>
                 <AuthForm type="login" />

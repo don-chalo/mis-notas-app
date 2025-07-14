@@ -6,16 +6,16 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
 import { Button } from "./ui/button";
+import { logOutAction } from "@/actions/users";
 
-export default function LogoutButton() {
+export default function LogOutButton() {
     const router = useRouter();
     const [loading, setLoading] = React.useState(false);
 
     const handleLogout = async () => {
         setLoading(true);
-        await new Promise((resolve) => setTimeout(resolve, 500));
-        const error = 0;
-        if (!error) {
+        const { errorMessage } = await logOutAction();
+        if (!errorMessage) {
             toast.success(
                 "¡Hasta pronto!",
                 { description: "Has cerrado sesión con exito" }
@@ -24,16 +24,14 @@ export default function LogoutButton() {
         } else {
             toast.error(
                 "Error",
-                {
-                    description: error
-                }
+                { description: errorMessage }
             );
         }
         setLoading(false);
     };
 
     return (
-        <Button className="w-24"
+        <Button className="w-24 cursor-pointer"
             disabled={loading}
             variant="outline"
             onClick={handleLogout}>
@@ -41,7 +39,7 @@ export default function LogoutButton() {
                 loading ? (
                     <Loader2 className="animate-spin" />
                 ) : (
-                    "Log Out"
+                    "Cerrar"
                 )
             }
         </Button>
